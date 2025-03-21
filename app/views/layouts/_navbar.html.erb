@@ -1,8 +1,9 @@
 <nav class="navbar">
   <ul>
-    <li><%= link_to "Home", root_path, class: current_page?(root_path) ? "__active" : "" %></li>
-    <li><%= link_to "About Me", about_me_path, class: current_page?(about_me_path) ? "__active" : "" %></li>
-    <li><%= link_to "Login", login_path, class: current_page?(login_path) ? "__active" : "" %></li>
-    <li><%= link_to "SignUp", signup_path, class: current_page?(signup_path) ? "__active" : "" %></li>
+    <li><%= link_to t("navbar.home"), root_path, class: current_page?(root_path) ? "__active" : "" %></li>
+    <li><%= link_to t("navbar.about"), about_me_path, class: current_page?(about_me_path) ? "__active" : "" %></li>
+    <li><%= link_to t("navbar.login"), login_path, class: current_page?(login_path) ? "__active" : "" %></li>
+    <li><%= link_to t("navbar.signup"), signup_path, class: current_page?(signup_path) ? "__active" : "" %></li>
   </ul>
 </nav>
+<div class="shadow"></div>

@@ -1,14 +1,13 @@
+@import "variables";
+
 .navbar {
-  background-color: #333;
+  background-color: $bg-paper;
   padding: 1rem;
   position: fixed;
   top: 0;
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
   ul {
-    list-style-type: none;
-    padding: 0;
     display: flex;
     justify-content: space-around;
     max-width: 600px;
@@ -20,20 +19,72 @@
   }
 
   a {
-    color: white;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-    font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    transition: background-color 0.3s;
-    border-radius: 5px;
+    border-radius: 60px;
+    transition: $main-transition;
+    display: inline-block;
 
-    &__active {
-      background-color: #261B23;
+    &.__active {
+      position: relative;
+      --border-width: 2px;
+      box-shadow: 0 1px 3px rgba(85, 151, 189, 0.6), 0 1px 2px rgba(85, 151, 189, 0.12);
+      transition: $main-transition;
+
+      // Gradient background layer
+      &::after {
+        content: '';
+        position: absolute;
+        top: var(--border-width);
+        left: var(--border-width);
+        width: calc(100% - 2 * var(--border-width));
+        height: calc(100% - 2 * var(--border-width));
+        background: linear-gradient(
+                        60deg,
+                        #f79533,
+                        #f37055,
+                        #ef4e7b,
+                        #a166ab,
+                        #5073b8,
+                        #1098ad,
+                        #07b39b,
+                        #6fba82
+        );
+        background-size: 300% 300%;
+        border-radius: 60px;
+        z-index: -2;
+        animation: animatedgradient 3s ease alternate infinite;
+      }
+
+      // Content overlay to create inset effect
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc(var(--border-width) + 3px);
+        left: calc(var(--border-width) + 3px);
+        width: calc(100% - 5 * var(--border-width));
+        height: calc(100% - 5 * var(--border-width));
+        background-color: $bg-white;
+        border-radius: calc(60px - var(--border-width));
+        z-index: -1;
+        box-shadow: -2px -3px 6px 0px rgba(85, 151, 189, 0.21) inset;
+      }
     }
 
-    :hover {
-      background-color: #555;
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 28px rgba(85, 151, 189, 0.25), 0 10px 10px rgba(85, 151, 189, 0.22);
     }
+  }
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

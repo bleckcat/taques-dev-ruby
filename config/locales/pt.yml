@@ -1,0 +1,8 @@
+pt:
+  navbar:
+    home: "Inicio"
+    about: "Sobre"
+    services: "Servicos"
+    contact: "Contato"
+    login: "Login"
+    signup: "Sign Up"

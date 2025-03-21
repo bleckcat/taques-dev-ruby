@@ -28,4 +28,10 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  navbar:
+    home: "Home"
+    about: "About"
+    services: "Services"
+    contact: "Contact"
+    login: "Login"
+    signup: "Sign Up"
