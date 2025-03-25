@@ -2,8 +2,18 @@
   <ul>
     <li><%= link_to t("navbar.home"), root_path, class: current_page?(root_path) ? "__active" : "" %></li>
     <li><%= link_to t("navbar.about"), about_me_path, class: current_page?(about_me_path) ? "__active" : "" %></li>
-    <li><%= link_to t("navbar.login"), login_path, class: current_page?(login_path) ? "__active" : "" %></li>
-    <li><%= link_to t("navbar.signup"), signup_path, class: current_page?(signup_path) ? "__active" : "" %></li>
+    <% if logged_in? %>
+      <li>
+        <%= button_to "Log out", logout_path, method: :delete %>
+      </li>
+      <li>
+        <p>Logged in as: <%= current_user.email %></p>
+      </li>
+
+    <% else %>
+      <li><%= link_to t("navbar.login"), login_path, class: current_page?(login_path) ? "__active" : "" %></li>
+      <li><%= link_to t("navbar.signup"), signup_path, class: current_page?(signup_path) ? "__active" : "" %></li>
+    <% end %>
   </ul>
+  <div class="shadow" style="position: absolute; bottom: -26px"></div>
 </nav>
-<div class="shadow"></div>

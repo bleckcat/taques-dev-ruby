@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  get "users/new"
   root "pages#home"
-  get "about_me", to: "pages#about_me"
-  get "login", to: "sessions#new"
+
   get "signup", to: "users#new"
+  post "signup", to: "users#create"
+
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+
+  get "about_me", to: "pages#about_me"
 end
