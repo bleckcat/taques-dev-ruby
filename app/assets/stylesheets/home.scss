@@ -1,105 +1,176 @@
+$carousel-width: 210px;
+$cell-width: 190px;
+$cell-height: 300px;
+$radius: 288px;
+$perspective: 1000px;
+$cell-count: 6;
+$border-width: 2px;
+
 .scene {
   position: relative;
-  width: 210px;
+  width: $carousel-width;
+  height: 400px;
   margin: 80px auto;
-  perspective: 1000px;
+  perspective: $perspective;
 }
 
 .carousel {
   width: 100%;
   height: 100%;
   position: absolute;
-  transform: translateZ(-288px);
+  transform: translateZ(-$radius);
   transform-style: preserve-3d;
   transition: transform 1s;
-}
 
-.carousel__cell {
-  position: absolute;
-  width: 190px;
-  height: 300px;
-  left: 10px;
-  top: 10px;
-  border: 2px solid black;
-  color: white;
-  text-align: center;
-  transition: transform 1s, opacity 1s;
-}
+  &__cell {
+    position: absolute;
+    width: $cell-width;
+    height: $cell-height;
+    transition: transform 1s, opacity 1s;
+    --border-width: #{$border-width};
+    -webkit-box-reflect: below 18px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
+    padding: 8px;
 
-.carousel__cell:nth-child(9n+1) {
-  background: hsla(0, 100%, 50%, 0.8);
-}
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(var(--border-width) - 2px);
+      left: calc(var(--border-width) - 2px);
+      width: 100%;
+      height: 100%;
+      background-size: 300% 300%;
+      z-index: -2;
+      border-radius: 16px 8px;
+      animation: animatedgradient 8s ease alternate infinite;
+    }
 
-.carousel__cell:nth-child(9n+2) {
-  background: hsla(40, 100%, 50%, 0.8);
-}
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(var(--border-width) - 0px);
+      left: calc(var(--border-width) - 0px);
+      width: calc(100% - 2 * var(--border-width));
+      height: calc(100% - 2 * var(--border-width));
+      background-color: white;
+      border-radius: 14px 6px;
+      z-index: -1;
+      box-shadow: -2px -3px 6px 0px rgba(85, 151, 189, 0.08) inset;
+    }
 
-.carousel__cell:nth-child(9n+3) {
-  background: hsla(80, 100%, 50%, 0.8);
-}
+    &.docker::after {
+      background: linear-gradient(
+                      60deg,
+                      #0000ff, /* Blue */
+                      #1e90ff, /* Dodger Blue */
+                      #00bfff, /* Deep Sky Blue */
+                      #00ffff, /* Cyan */
+                      #00ced1, /* Dark Turquoise */
+                      #4682b4, /* Steel Blue */
+                      #5f9ea0, /* Cadet Blue */
+                      #0000ff /* Blue */
+      );
 
-.carousel__cell:nth-child(9n+4) {
-  background: hsla(120, 100%, 50%, 0.8);
-}
+      background-size: 300% 300%;
+    }
 
-.carousel__cell:nth-child(9n+5) {
-  background: hsla(160, 100%, 50%, 0.8);
-}
+    &.ruby::after {
+      background: linear-gradient(
+                      60deg,
+                      #ff0000, /* Red */
+                      #ff4500, /* Orange-Red */
+                      #ff6347, /* Tomato */
+                      #ff7f50, /* Coral */
+                      #dc143c, /* Crimson */
+                      #b22222, /* Firebrick */
+                      #8b0000, /* Dark Red */
+                      #ff0000 /* Red */
+      );
+      background-size: 300% 300%;
+    }
 
-.carousel__cell:nth-child(9n+6) {
-  background: hsla(200, 100%, 50%, 0.8);
-}
+    &.ts::after {
+      background: linear-gradient(
+                      60deg,
+                      #0000ff, /* Blue */
+                      #1e90ff, /* Dodger Blue */
+                      #4169e1, /* Royal Blue */
+                      #4682b4, /* Steel Blue */
+                      #5f9ea0, /* Cadet Blue */
+                      #6495ed, /* Cornflower Blue */
+                      #00008b, /* Dark Blue */
+                      #0000ff /* Blue */
+      );
+      background-size: 300% 300%;
+    }
 
-.carousel__cell:nth-child(9n+7) {
-  background: hsla(240, 100%, 50%, 0.8);
-}
+    &.azure::after {
+      background: linear-gradient(
+                      60deg,
+                      #0000ff, /* Blue */
+                      #00008b, /* Dark Blue */
+                      #191970, /* Midnight Blue */
+                      #1e3a8a, /* Deep Royal Blue */
+                      #4169e1, /* Royal Blue */
+                      #4682b4, /* Steel Blue */
+                      #5f9ea0, /* Cadet Blue */
+                      #0000ff /* Blue */
+      );
 
-.carousel__cell:nth-child(9n+8) {
-  background: hsla(280, 100%, 50%, 0.8);
-}
+      background-size: 300% 300%;
+    }
 
-.carousel__cell:nth-child(9n+0) {
-  background: hsla(320, 100%, 50%, 0.8);
-}
+    &.react::after {
+      background: linear-gradient(
+                      60deg,
+                      #00ffff, /* Cyan */
+                      #40e0d0, /* Turquoise */
+                      #48d1cc, /* Medium Turquoise */
+                      #20b2aa, /* Light Sea Green */
+                      #5f9ea0, /* Cadet Blue */
+                      #00ced1, /* Dark Turquoise */
+                      #008b8b, /* Dark Cyan */
+                      #00ffff /* Cyan */
+      );
+      background-size: 300% 300%;
+    }
 
-.carousel__cell:nth-child(1) {
-  transform: rotateY(0deg) translateZ(288px);
-}
+    &.python::after {
+      background: linear-gradient(
+                      60deg,
+                      #FFDE57, /* Yellow */
+                      #ffcc00, /* Golden Yellow */
+                      #ffd700, /* Gold */
+                      #1e90ff, /* Dodger Blue */
+                      #4169e1, /* Royal Blue */
+                      #4682b4, /* Steel Blue */
+                      #4584B6, /* Blue */
+                      #646464 /* Yellow */
+      );
 
-.carousel__cell:nth-child(2) {
-  transform: rotateY(40deg) translateZ(288px);
+      background-size: 300% 300%;
+    }
+  }
 }
-
-.carousel__cell:nth-child(3) {
-  transform: rotateY(80deg) translateZ(288px);
-}
-
-.carousel__cell:nth-child(4) {
-  transform: rotateY(120deg) translateZ(288px);
-}
-
-.carousel__cell:nth-child(5) {
-  transform: rotateY(160deg) translateZ(288px);
-}
-
-.carousel__cell:nth-child(6) {
-  transform: rotateY(200deg) translateZ(288px);
-}
-
-.carousel__cell:nth-child(7) {
-  transform: rotateY(240deg) translateZ(288px);
-}
-
-.carousel__cell:nth-child(8) {
-  transform: rotateY(280deg) translateZ(288px);
-}
-
-.carousel__cell:nth-child(9) {
-  transform: rotateY(320deg) translateZ(288px);
-}
-
 
 .carousel-options {
   position: relative;
   z-index: 2;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0 50%;
+  }
+  25% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0 100%;
+  }
+  75% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
