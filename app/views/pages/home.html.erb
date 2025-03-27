@@ -2,19 +2,25 @@
 <section class="content-wrapper">
   <div class="scene">
     <div class="carousel">
-      <div class="carousel__cell ts">
-        <div>TS</div>
-        <h2>The creator of websites</h2>
-        <p>TypeScript is like a brother to me, it's annoying and helpful, I hate it, but I love it, that's TS for
-          me.</p>
-        <button>Learn More</button>
-      </div>
-      <div class="carousel__cell docker"></div>
-      <div class="carousel__cell azure"></div>
-      <div class="carousel__cell react"></div>
-      <div class="carousel__cell ruby"></div>
-      <div class="carousel__cell python"></div>
+      <% @technologies.each do |tech| %>
+        <div class="carousel__cell <%= tech[:id] %>">
+          <div class="banner">
+            <%= image_tag "#{tech[:id]}.svg", alt: "#{tech[:name]}", width: 54 %>
+          </div>
+          <div class="cell-content">
+            <h2><%= tech[:title] %></h2>
+            <p><%= tech[:description] %></p>
+            <div class="cell-actions">
+              <button class="open-modal-button" data-modal-id="modal-<%= tech[:id] %>">Learn More</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
+
+  <% @technologies.each do |tech| %>
+    <%= render partial: "modal", locals: { technology: tech } %>
+  <% end %>
 </section>
 <div style="height: 1000px;">Scroll me!</div>

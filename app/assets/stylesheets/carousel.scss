@@ -1,0 +1,167 @@
+@import "button";
+@import "variables";
+
+$carousel-width: 210px;
+$cell-width: 190px;
+$cell-height: 300px;
+$radius: 288px;
+$perspective: 1000px;
+$cell-count: 6;
+$border-width: 2px;
+
+.scene {
+  position: relative;
+  width: $carousel-width;
+  height: 400px;
+  margin: 80px auto;
+  perspective: $perspective;
+}
+
+.carousel {
+  width: 100%;
+  position: absolute;
+  transform: translateZ(-$radius);
+  transform-style: preserve-3d;
+  transition: transform 1s;
+
+  &__cell {
+    position: absolute;
+    width: $cell-width;
+    transition: transform 1s, opacity 1s;
+    --border-width: #{$border-width};
+    -webkit-box-reflect: below 18px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255, 255, 255, 0.2)));
+    background-color: white;
+    border-radius: 16px 8px;
+
+    .cell-content {
+      padding: 16px;
+      font-size: 0.85rem;
+
+      h2 {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .cell-actions {
+        margin-top: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .banner {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+      border-radius: 16px 8px 0 0;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      line-height: 42px;
+      font-size: 48px;
+      height: 64px;
+    }
+
+
+    &.ts {
+      .banner {
+        background: $typescript;
+      }
+
+      .cell-content {
+        .cell-actions {
+          button {
+            background-color: transparent;
+            border: 1px solid $typescript;
+            color: $typescript;
+          }
+        }
+      }
+    }
+
+
+    &.docker {
+      .banner {
+        background: $docker;
+      }
+
+      .cell-content {
+        .cell-actions {
+          button {
+            background-color: transparent;
+            border: 1px solid $docker;
+            color: $docker;
+          }
+        }
+      }
+    }
+
+    &.ruby {
+      .banner {
+        background: $ruby;
+      }
+
+      .cell-content {
+        .cell-actions {
+          button {
+            background-color: transparent;
+            border: 1px solid $ruby;
+            color: $ruby;
+          }
+        }
+      }
+    }
+
+
+    &.azure {
+      .banner {
+        background: $azure;
+      }
+
+      .cell-content {
+        .cell-actions {
+          button {
+            background-color: transparent;
+            border: 1px solid $azure;
+            color: $azure;
+          }
+        }
+      }
+    }
+
+    &.react {
+      .banner {
+        background: $react;
+      }
+
+      .cell-content {
+        .cell-actions {
+          button {
+            background-color: transparent;
+            border: 1px solid $react;
+            color: $react;
+          }
+        }
+      }
+    }
+
+    &.python {
+      .banner {
+        background: linear-gradient(160deg, $python-blue-l 0%, $python-blue 49%, $python-yellow 50%, $python-yellow-l 100%);
+      }
+
+      .cell-content {
+        .cell-actions {
+          button {
+            background-color: transparent;
+            border: 1px solid $python-yellow;
+            color: $python-blue;
+          }
+        }
+      }
+    }
+  }
+}

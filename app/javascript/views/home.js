@@ -73,18 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return (scrollFraction - 0.5) * 2 * maxTilt;
     }
 
-    let prevButton = document.querySelector('.previous-button');
-    prevButton.addEventListener('click', () => {
-        selectedIndex--; // Rotate clockwise (left)
-        rotateCarousel();
-    });
-
-    let nextButton = document.querySelector('.next-button');
-    nextButton.addEventListener('click', () => {
-        selectedIndex++; // Rotate counterclockwise (right)
-        rotateCarousel();
-    });
-
     window.addEventListener('scroll', () => {
         rotateCarousel();
     });

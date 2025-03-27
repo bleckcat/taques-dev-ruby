@@ -1,4 +1,5 @@
 @import "variables";
+@import "button";
 
 .navbar {
   background-color: $bg-paper;
@@ -17,63 +18,6 @@
 
   li {
     display: inline;
-  }
-
-  a, button {
-    padding: 0.5rem 1rem;
-    border-radius: 60px;
-    transition: $main-transition;
-    display: inline-block;
-    position: relative;
-
-    &.__active {
-      position: relative;
-      --border-width: 1px;
-      box-shadow: 0 1px 3px rgba(85, 151, 189, 0.18), 0 1px 2px rgba(85, 151, 189, 0.22);
-      transition: $main-transition;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: calc(var(--border-width) + 3px);
-        left: calc(var(--border-width) + 3px);
-        width: calc(100% - 8 * var(--border-width));
-        height: calc(100% - 8 * var(--border-width));
-        background: linear-gradient(
-                        60deg,
-                        #f79533,
-                        #f37055,
-                        #ef4e7b,
-                        #a166ab,
-                        #5073b8,
-                        #1098ad,
-                        #07b39b,
-                        #6fba82
-        );
-        background-size: 300% 300%;
-        border-radius: 60px;
-        z-index: -2;
-        animation: animatedgradient 2s ease alternate infinite;
-      }
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: calc(var(--border-width) + 4px);
-        left: calc(var(--border-width) + 4px);
-        width: calc(100% - 10 * var(--border-width));
-        height: calc(100% - 10 * var(--border-width));
-        background-color: $bg-white;
-        border-radius: calc(60px - var(--border-width));
-        z-index: -1;
-        box-shadow: -2px -3px 6px 0px rgba(85, 151, 189, 0.08) inset;
-      }
-    }
-
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 14px 28px rgba(85, 151, 189, 0.22), 0 10px 10px rgba(85, 151, 189, 0.24);
-    }
   }
 }
 
